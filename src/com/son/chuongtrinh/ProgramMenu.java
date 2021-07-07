@@ -22,7 +22,8 @@ public class ProgramMenu {
             System.out.println("5. Thay đổi trạng thai của nhân viên");
             System.out.println("6. Thông tin tài khoản");
             System.out.println("7. hiện thị toàn bộ thông tin");
-            System.out.println("8. Exit");
+            System.out.println("8. Sắp xếp Nhân viên");
+            System.out.println("9. Exit");
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice){
                 case 1:
@@ -60,6 +61,9 @@ public class ProgramMenu {
                     manager.show();
                     break;
                 case 8:
+                    manager.menuSort();
+                    break;
+                case 9:
                     System.exit(0);
             }
         }
