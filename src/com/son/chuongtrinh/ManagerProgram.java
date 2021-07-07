@@ -53,7 +53,7 @@ public class ManagerProgram {
         System.out.println("3. Quay lại");
         System.out.print("Nhập lựa chọn: ");
         int choice = Integer.parseInt(scanner.nextLine());
-        switch (choice){
+        switch (choice) {
             case 1:
                 sortUp();
                 break;
@@ -62,17 +62,17 @@ public class ManagerProgram {
                 break;
             case 3:
                 break;
-
         }
     }
 
-    private void sortUp(){
+    private void sortUp() {
         SortUp sortUp = new SortUp();
-        Collections.sort(list,sortUp);
+        Collections.sort(list, sortUp);
     }
-    private void sortDown(){
+
+    private void sortDown() {
         SortDown sortDown = new SortDown();
-        Collections.sort(list,sortDown);
+        Collections.sort(list, sortDown);
     }
 
     public void show() {
@@ -92,7 +92,7 @@ public class ManagerProgram {
                 check = 1;
             }
         }
-        check(check, "__________", "Không tìm thấy");
+        check(check, "__________\n", "Không tìm thấy");
     }
 
     //Kiểm tra trạng thái của nhân viên
@@ -107,7 +107,7 @@ public class ManagerProgram {
                 break;
             }
         }
-        check(check, "Tìm thành công...\n", "Không tìm thấy...\n");
+        check(check, "__________\n", "Không tìm thấy...\n");
     }
 
     //Cập nhập
