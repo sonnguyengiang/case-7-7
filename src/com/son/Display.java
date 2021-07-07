@@ -1,13 +1,10 @@
 package com.son;
 
-
-import com.son.chuongtrinh.ProgramMenu;
 import com.son.login.data.ManagerAccount;
-import com.son.login.data.file.CreateFilePass;
 
 import java.util.Scanner;
 
-public class Menu {
+public class Display {
     Scanner scanner = new Scanner(System.in);
     ManagerAccount managerAccount = new ManagerAccount();
     public void client() {
@@ -21,7 +18,6 @@ public class Menu {
                     managerAccount.login();
                     break;
                 case 2:
-
                     managerAccount.createNewAccount();
                     break;
                 case 0:

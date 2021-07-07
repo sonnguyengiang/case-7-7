@@ -1,4 +1,4 @@
-package com.son.chuongtrinh.file.fail;
+package com.son.chuongtrinh.fail;
 
 public class AgeFail extends Exception{
     @Override

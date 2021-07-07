@@ -1,16 +1,18 @@
 package com.son.chuongtrinh;
 
+
+import com.son.login.data.ManagerAccount;
+import com.son.login.data.ManagerUser;
 import com.son.nhanvien.Staff;
 
 import java.util.Scanner;
 
 public class ProgramMenu {
-    Scanner scanner = new Scanner(System.in);
-    ManagerProgram manager = new ManagerProgram();
-    public ProgramMenu(){
-    }
+    static Scanner scanner = new Scanner(System.in);
+    static ManagerProgram manager = new ManagerProgram();
+    static ManagerUser managerUser = new ManagerUser();
 
-    public void menu(){
+    static public void menu(){
         while (true){
             System.out.println("-------Menu-------");
             System.out.println("1. Thêm nhân viên");
@@ -46,12 +48,13 @@ public class ProgramMenu {
                     manager.checkStatus();
                     break;
                 case 4:
-                    manager.editNV();
+                    manager.updateNhanVien();
                     break;
                 case 5:
                     manager.editStatus();
                     break;
                 case 6:
+                    managerUser.MenuUser();
                     break;
                 case 7:
                     manager.show();

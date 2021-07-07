@@ -16,7 +16,6 @@ public class DocFile<T> {
             list = (ArrayList<T>) ois.readObject();
             ois.close();
         }catch (Exception e){
-            e.printStackTrace();
         }
         return list;
     }

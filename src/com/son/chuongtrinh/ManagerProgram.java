@@ -1,22 +1,32 @@
 package com.son.chuongtrinh;
 
-import com.son.chuongtrinh.file.fail.AgeFail;
-import com.son.chuongtrinh.file.fail.GenderFail;
-import com.son.chuongtrinh.file.fail.IdFail;
+import com.son.chuongtrinh.fail.AgeFail;
+import com.son.chuongtrinh.fail.GenderFail;
+import com.son.chuongtrinh.fail.IdFail;
+import com.son.file.DocFile;
+import com.son.file.GhiFile;
 import com.son.nhanvien.Staff;
 import com.son.nhanvien.StaffFullTime;
 import com.son.nhanvien.StaffPartTime;
-import com.son.chuongtrinh.file.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ManagerProgram {
-    ArrayList<Staff> list = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
+    DocFile<Staff> docFile = new DocFile();
+    GhiFile<Staff> ghiFile = new GhiFile();
+    ArrayList<Staff> list = docFile.docFile("D:\\java\\modun2\\case study\\qlnv.txt");
+
+    private void check(int check, String a, String b){
+        if (check > 0){
+            System.out.println(a);
+        } else {
+            System.out.println(b);
+        }
+    }
 
     public void show() {
-        list = docFile.docFile();
         for (Staff staff : list) {
             System.out.println(staff);
         }
@@ -24,7 +34,6 @@ public class ManagerProgram {
 
     //tìm kiếm theo tên
     public void findByName() {
-        ArrayList<Staff> list = docFile.docFile();
         System.out.print("Nhập tên cần tìm: ");
         String name = scanner.nextLine();
         for (int i = 0; i < list.size(); i++) {
@@ -38,48 +47,68 @@ public class ManagerProgram {
     public void checkStatus() {
         System.out.print("Nhập id của nhân viên: ");
         int id = Integer.parseInt(scanner.nextLine());
+        int check = -1;
         for (Staff e : list) {
             if (e.getId() == id) {
                 System.out.println(e.getName() + " hiện tại " + e.getStatus());
+                check = 1;
+                break;
+            }else {
+                check = -1;
             }
         }
+        check(check,"Tìm thành công...\n","Không tìm thấy...\n");
     }
 
     //Cập nhập
-    public void editNV() {
+    public void updateNhanVien() {
         System.out.print("Nhập id của nhân viên cần sửa: ");
         int id = Integer.parseInt(scanner.nextLine());
+        int check = -1;
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getId() == id) {
                 if (list.get(i) instanceof StaffFullTime) {
                     list.set(i, create("full"));
+                    check = -1;
                     break;
                 } else {
                     list.set(i, create("part"));
+                    check = -1;
                     break;
                 }
+            } else {
+                check = 1;
             }
         }
-        ghiFile.ghiFile(list);
+        check(check,"Update thành công","Không tìm thấy nhân viên");
+        ghiFile.ghiFile("D:\\java\\modun2\\case study\\qlnv.txt",list);
     }
 
     //Thay đổi trạng thái
     public void editStatus() {
         System.out.print("Nhập id của nhân viên: ");
         int id = Integer.parseInt(scanner.nextLine());
+        int check = -1;
         for (Staff staff : list) {
-            if (staff instanceof StaffFullTime) {
-                String status = getStatus();
-                ((StaffFullTime) staff).setStatus(status);
-                break;
-            }
-            if (staff instanceof StaffPartTime) {
-                String status = getStatus();
-                ((StaffPartTime) staff).setStatus(status);
-                break;
+            if (staff.getId() == id){
+                if (staff instanceof StaffFullTime) {
+                    String status = getStatus();
+                    ((StaffFullTime) staff).setStatus(status);
+                    check = 1;
+                    break;
+                }
+                if (staff instanceof StaffPartTime) {
+                    String status = getStatus();
+                    ((StaffPartTime) staff).setStatus(status);
+                    check = 1;
+                    break;
+                }
+            } else {
+                check = -1;
             }
         }
-        ghiFile.ghiFile(list);
+        check(check,"Sửa thành công...\n","Không tìm thấy...\n");
+        ghiFile.ghiFile("D:\\java\\modun2\\case study\\qlnv.txt",list);
     }
 
     //Hàm tạo kiểu nhân viên<fulltime và partime>
@@ -102,7 +131,7 @@ public class ManagerProgram {
     //Thêm danh sách
     public void addList(Staff staff) {
         list.add(staff);
-        ghiFile.ghiFile(list);
+        ghiFile.ghiFile("D:\\java\\modun2\\case study\\qlnv.txt",list);
     }
 
     private String getName() {
@@ -213,20 +242,4 @@ public class ManagerProgram {
         }
     }
 
-
-    //----user----
-    public void managerUser() {
-        System.out.println("1. hiện thị thông tin tài khoản");
-        System.out.println("2. thay đổi mật khẩu");
-        System.out.println("3. exit");
-        int choice = Integer.parseInt(scanner.nextLine());
-        switch (choice) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-        }
-    }
 }

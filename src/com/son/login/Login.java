@@ -10,8 +10,7 @@ public class Login implements Serializable{
     public Login() {
     }
 
-    public Login(String userName, String account, String password) {
-        this.userName = userName;
+    public Login(String account, String password) {
         this.account = account;
         this.password = password;
     }
@@ -20,16 +19,9 @@ public class Login implements Serializable{
         return userName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
     public String getAccount() {
         return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
     }
 
     public String getPassword() {
@@ -43,8 +35,7 @@ public class Login implements Serializable{
     @Override
     public String toString() {
         return "Login{" +
-                "userName='" + userName + '\'' +
-                ", account='" + account + '\'' +
+                "account='" + account + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }
