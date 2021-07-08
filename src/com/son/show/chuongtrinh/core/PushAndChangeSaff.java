@@ -68,7 +68,6 @@ public class PushAndChangeSaff {
         ghiFile.ghiFile("qlnv.txt", list);
     }
 
-
     //Thêm danh sách
     public void addList(Staff staff) {
         list.add(staff);

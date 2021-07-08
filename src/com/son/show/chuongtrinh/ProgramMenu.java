@@ -21,7 +21,7 @@ public class ProgramMenu {
         while (true){
             try{
                 while (true){
-                    System.out.println("-------Menu-------");
+                    System.out.println("-----------Menu-----------");
                     System.out.println("1. Thêm nhân viên");
                     System.out.println("2. Tìm kiếm nhân viên");
                     System.out.println("3. Kiểm tra trạng thái nhân viên");
