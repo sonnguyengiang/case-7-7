@@ -27,7 +27,7 @@ public class ManagerAccount {
     }
 
     private void checkAccount(String account, String password) {
-        ArrayList<Login> arrayList = docFile.docFile("D:\\java\\modun2\\case study\\account.txt");
+        ArrayList<Login> arrayList = docFile.docFile("account.txt");
         int check = -1;
         if (arrayList.size() == 0) {
             System.out.println("ứng dụng này hiện tại chưa có ai đăng kí ...\n");
@@ -50,7 +50,7 @@ public class ManagerAccount {
     }
 
     public void createNewAccount() {
-        ArrayList<Login> arrayList = docFile.docFile("D:\\java\\modun2\\case study\\account.txt");
+        ArrayList<Login> arrayList = docFile.docFile("account.txt");
         System.out.print("Nhập tài khoản: ");
         String account = scanner.nextLine();
         System.out.print("Nhập mật khẩu: ");
@@ -59,7 +59,7 @@ public class ManagerAccount {
         if (arrayList.size() == 0) {
             arrayList.add(new Login(account, password));
             System.out.println("Thêm thành công ...\n");
-            ghiFile.ghiFile("D:\\java\\modun2\\case study\\account.txt", arrayList);
+            ghiFile.ghiFile("account.txt", arrayList);
         } else {
             for (Login login : arrayList) {
                 if (login.getAccount().equals(account)) {
@@ -72,7 +72,7 @@ public class ManagerAccount {
             if (check > 0) {
                 arrayList.add(new Login(account, password));
                 System.out.println("Thêm thành công ...\n");
-                ghiFile.ghiFile("D:\\java\\modun2\\case study\\account.txt", arrayList);
+                ghiFile.ghiFile("account.txt", arrayList);
             }
         }
     }
@@ -86,7 +86,7 @@ public class ManagerAccount {
                 exception.printStackTrace();
             }
         }
-        ArrayList<Login> list = docFile.docFile("D:\\java\\modun2\\case study\\account.txt");
+        ArrayList<Login> list = docFile.docFile("account.txt");
         ArrayList<Login> arrayList = new ArrayList<>();
         arrayList.add(new Login("1","2"));
         String passwordTemp = "";

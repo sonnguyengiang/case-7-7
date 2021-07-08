@@ -91,5 +91,7 @@ public class Staff implements Serializable{
                         ", status='" + status + '\'' +
                         ", salary=" + salary;
     }
-
+    public String typeSaff(){
+        return "";
+    }
 }

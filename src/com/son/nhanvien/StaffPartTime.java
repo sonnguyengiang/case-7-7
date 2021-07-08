@@ -31,4 +31,8 @@ public class StaffPartTime extends Staff {
                 " timeWork=" + timeWork +
                 '}';
     }
+
+    public String typeSaff(){
+        return "StaffPartTime";
+    }
 }

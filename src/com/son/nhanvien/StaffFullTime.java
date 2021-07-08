@@ -18,4 +18,8 @@ public class StaffFullTime extends Staff{
     public String toString() {
         return "StaffFullTime{" + super.toString() + "}";
     }
+
+    public String typeSaff(){
+        return "StaffFullTime";
+    }
 }

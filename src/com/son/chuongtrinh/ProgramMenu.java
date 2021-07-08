@@ -21,11 +21,12 @@ public class ProgramMenu {
                     System.out.println("2. Tìm kiếm nhân viên");
                     System.out.println("3. Kiểm tra trạng thái nhân viên");
                     System.out.println("4. Sửa thông tin của nhân viên");
-                    System.out.println("5. Thay đổi trạng thai của nhân viên");
+                    System.out.println("5. Thay đổi trạng thái của nhân viên");
                     System.out.println("6. Thông tin tài khoản");
                     System.out.println("7. hiện thị toàn bộ thông tin");
                     System.out.println("8. Sắp xếp Nhân viên");
-                    System.out.println("9. Exit");
+                    System.out.println("9. xóa nhân viên");
+                    System.out.println("0. Exit");
                     System.out.print("Nhập lựa chọn: ");
                     int choice = Integer.parseInt(scanner.nextLine());
                     switch (choice){
@@ -67,11 +68,13 @@ public class ProgramMenu {
                             manager.menuSort();
                             break;
                         case 9:
+                            manager.remove();
+                            break;
+                        case 0:
                             System.exit(0);
                     }
                 }
             } catch (Exception e){
-
             }
         }
     }

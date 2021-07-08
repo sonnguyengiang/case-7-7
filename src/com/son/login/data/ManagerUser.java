@@ -19,10 +19,23 @@ public class ManagerUser {
         switch (choice) {
             case 1:
                 changePass();
+                showa();
                 break;
             case 2:
                 break;
         }
+    }
+
+    private void showa(){
+        DocFile<Login> docFile = new DocFile<>();
+        ArrayList<Login> list =  docFile.docFile("account.txt");
+        ArrayList<Login> list1 =  docFile.docFile("AccountUsing.txt");
+        for (Login a: list) {
+            System.out.println(a);
+        }
+//        for (Login b: list1) {
+//            System.out.println(b);
+//        }
     }
 
     public void changePass(){
@@ -31,7 +44,7 @@ public class ManagerUser {
         checkOldPassword(oldPassword);
     }
     private void checkOldPassword(String oldPassword){
-        ArrayList<Login> list = docFile.docFile("D:\\java\\modun2\\case study\\account.txt");
+        ArrayList<Login> list = docFile.docFile("account.txt");
         int check = -1;
         for (Login a: list){
             if (a.getPassword().equals(oldPassword)){
@@ -62,14 +75,14 @@ public class ManagerUser {
         }
     }
     private void addNewPass(String newPassword){
-        ArrayList<Login> list = docFile.docFile("D:\\java\\modun2\\case study\\account.txt");
-        ArrayList<Login> arrayList = docFile.docFile(" AccountUsing.txt");
+        ArrayList<Login> list = docFile.docFile("account.txt");
+        ArrayList<Login> arrayList = docFile.docFile("AccountUsing.txt");
         String account = arrayList.get(0).getAccount();
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getAccount().equals(account)){
                 list.set(i,new Login(account,newPassword));
                 System.out.println("Thay đổi thành công");
-                ghiFile.ghiFile("D:\\java\\modun2\\case study\\account.txt",list);
+                ghiFile.ghiFile("account.txt",list);
                 break;
             }
         }

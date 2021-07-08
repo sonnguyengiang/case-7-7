@@ -3,10 +3,12 @@ package com.son.chuongtrinh;
 import com.son.chuongtrinh.fail.AgeFail;
 import com.son.chuongtrinh.fail.GenderFail;
 import com.son.chuongtrinh.fail.IdFail;
+import com.son.chuongtrinh.sapxep.SortByType;
 import com.son.chuongtrinh.sapxep.SortDown;
 import com.son.chuongtrinh.sapxep.SortUp;
 import com.son.file.DocFile;
 import com.son.file.GhiFile;
+import com.son.login.Login;
 import com.son.nhanvien.Staff;
 import com.son.nhanvien.StaffFullTime;
 import com.son.nhanvien.StaffPartTime;
@@ -19,7 +21,7 @@ public class ManagerProgram {
     Scanner scanner = new Scanner(System.in);
     DocFile<Staff> docFile = new DocFile();
     GhiFile<Staff> ghiFile = new GhiFile();
-    ArrayList<Staff> list = docFile.docFile("D:\\java\\modun2\\case study\\qlnv.txt");
+    ArrayList<Staff> list = docFile.docFile("qlnv.txt");
 
     //kiểm tra điều điện
     private void check(int check, String a, String b) {
@@ -47,23 +49,28 @@ public class ManagerProgram {
         }
     }
 
+    //sắp xếp
     public void menuSort() {
-        System.out.println("1. Sắp xếp theo id từ thấp đến cao");
-        System.out.println("2. sắp xếp theo id từ cao xuống thấp");
-        System.out.println("3. Quay lại");
-        System.out.print("Nhập lựa chọn: ");
-        int choice = Integer.parseInt(scanner.nextLine());
-        switch (choice) {
-            case 1:
-                sortUp();
-                break;
-            case 2:
-                sortDown();
-                break;
-            case 3:
-                break;
+            System.out.println("1. Sắp xếp theo id từ thấp đến cao");
+            System.out.println("2. sắp xếp theo id từ cao xuống thấp");
+            System.out.println("3. Phân loại nhân viên");
+            System.out.println("4. Quay lại");
+            System.out.print("Nhập lựa chọn: ");
+            int choice = Integer.parseInt(scanner.nextLine());
+            switch (choice) {
+                case 1:
+                    sortUp();
+                    break;
+                case 2:
+                    sortDown();
+                    break;
+                case 3:
+                    sortSaffByType();
+                    break;
+                case 4:
+                    break;
+            }
         }
-    }
 
     private void sortUp() {
         SortUp sortUp = new SortUp();
@@ -73,6 +80,11 @@ public class ManagerProgram {
     private void sortDown() {
         SortDown sortDown = new SortDown();
         Collections.sort(list, sortDown);
+    }
+
+    private void sortSaffByType(){
+        SortByType sortByType = new SortByType();
+        Collections.sort(list,sortByType);
     }
 
     public void show() {
@@ -131,7 +143,7 @@ public class ManagerProgram {
             }
         }
         check(check, "Update thành công", "Không tìm thấy nhân viên");
-        ghiFile.ghiFile("D:\\java\\modun2\\case study\\qlnv.txt", list);
+        ghiFile.ghiFile("qlnv.txt", list);
     }
 
     //Thay đổi trạng thái
@@ -158,13 +170,24 @@ public class ManagerProgram {
             }
         }
         check(check, "Sửa thành công...\n", "Không tìm thấy...\n");
-        ghiFile.ghiFile("D:\\java\\modun2\\case study\\qlnv.txt", list);
+        ghiFile.ghiFile("qlnv.txt", list);
     }
 
     //Thêm danh sách
     public void addList(Staff staff) {
         list.add(staff);
-        ghiFile.ghiFile("D:\\java\\modun2\\case study\\qlnv.txt", list);
+        ghiFile.ghiFile("qlnv.txt", list);
+    }
+    //xóa nhân viên
+    public void remove(){
+        System.out.print("Nhập id nhân viên muốn cho ra đảo: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getId() == id){
+                list.remove(i);
+            }
+        }
+        ghiFile.ghiFile("qlnv.txt",list);
     }
 
     private String getName() {
@@ -215,14 +238,20 @@ public class ManagerProgram {
     }
 
     private String getStatus() {
-        System.out.print("Nhập trạng thái của nhân viên(true/false): ");
-        String status = scanner.nextLine();
-        if (status.equals("true")) {
-            return "đang đi làm";
-        } else if (status.equals("false")) {
-            return "đang nghỉ";
-        } else
-            return "chưa xác nhận";
+        while (true){
+            System.out.println("   1. đang đi làm");
+            System.out.println("   2. đang nghỉ");
+            System.out.println("   3. quay lại");
+            int choice = Integer.parseInt(scanner.nextLine());
+            switch (choice) {
+                case 1:
+                    return "đang đi làm";
+                case 2:
+                    return "đang nghỉ";
+                case 3:
+                    System.exit(0);
+            }
+        }
     }
 
     private double getSalary() {
@@ -252,16 +281,16 @@ public class ManagerProgram {
             try {
                 System.out.print("Nhập id của nhân viên(Nhập số): ");
                 int id = Integer.parseInt(scanner.nextLine());
+                int check = -1;
                 if (list.isEmpty()) {
                     return id;
                 } else {
                     for (Staff a : list) {
                         if (a.getId() == id) {
                             throw new IdFail();
-                        } else {
-                            return id;
                         }
                     }
+                    return id;
                 }
             } catch (IdFail e) {
                 System.out.println(e.getMessage());
