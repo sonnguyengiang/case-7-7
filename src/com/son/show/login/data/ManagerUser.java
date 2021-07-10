@@ -33,9 +33,6 @@ public class ManagerUser {
         for (Login a: list) {
             System.out.println(a);
         }
-//        for (Login b: list1) {
-//            System.out.println(b);
-//        }
     }
 
     public void changePass(){
@@ -87,4 +84,6 @@ public class ManagerUser {
             }
         }
     }
+
+//    private void
 }

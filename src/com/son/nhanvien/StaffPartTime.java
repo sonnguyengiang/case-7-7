@@ -21,8 +21,8 @@ public class StaffPartTime extends Staff {
     }
 
     public double tinhLuong() {
-        double luong;
-        return luong = getSalary() * timeWork;
+        double luong = super.getSalary() * timeWork;
+        return luong;
     }
 
     @Override

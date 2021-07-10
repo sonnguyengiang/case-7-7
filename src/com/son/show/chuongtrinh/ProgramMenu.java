@@ -16,21 +16,23 @@ public class ProgramMenu {
     static FindByName findByName = new FindByName();
     static Status status = new Status();
     static Remove remove = new Remove();
+    static ShowSalary showSalary = new ShowSalary();
 
     static public void menu(){
         while (true){
             try{
                 while (true){
                     System.out.println("-----------Menu-----------");
-                    System.out.println("1. Thêm nhân viên");
-                    System.out.println("2. Tìm kiếm nhân viên");
-                    System.out.println("3. Kiểm tra trạng thái nhân viên");
-                    System.out.println("4. Sửa thông tin của nhân viên");
-                    System.out.println("5. Thay đổi trạng thái của nhân viên");
-                    System.out.println("6. Thông tin tài khoản");
-                    System.out.println("7. hiện thị toàn bộ thông tin");
-                    System.out.println("8. Sắp xếp Nhân viên");
-                    System.out.println("9. xóa nhân viên");
+                    System.out.println(" 1. Thêm nhân viên");
+                    System.out.println(" 2. Tìm kiếm nhân viên");
+                    System.out.println(" 3. Kiểm tra trạng thái nhân viên");
+                    System.out.println(" 4. Sửa thông tin của nhân viên");
+                    System.out.println(" 5. Thay đổi trạng thái của nhân viên");
+                    System.out.println(" 6. Thông tin tài khoản");
+                    System.out.println(" 7. hiện thị toàn bộ thông tin");
+                    System.out.println(" 8. Sắp xếp Nhân viên");
+                    System.out.println(" 9. xóa nhân viên");
+                    System.out.println("10. xóa nhân viên");
                     System.out.println("0. Exit");
                     System.out.print("Nhập lựa chọn: ");
                     int choice = Integer.parseInt(scanner.nextLine());
@@ -52,16 +54,16 @@ public class ProgramMenu {
                                 break;
                             }
                         case 2:
-                            findByName.findByName();
+                            findByName.findByName(manager);
                             break;
                         case 3:
-                            status.checkStatus();
+                            status.checkStatus(manager);
                             break;
                         case 4:
-                            manager.updateNhanVien();
+                            manager.updateNhanVien(manager);
                             break;
                         case 5:
-                            status.editStatus();
+                            status.editStatus(manager);
                             break;
                         case 6:
                             managerUser.MenuUser();
@@ -74,6 +76,9 @@ public class ProgramMenu {
                             break;
                         case 9:
                             remove.remove(manager);
+                            break;
+                        case 10:
+                            showSalary.menuSalary();
                             break;
                         case 0:
                             System.exit(0);

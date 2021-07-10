@@ -5,16 +5,16 @@ import com.son.show.chuongtrinh.sapxep.SortDown;
 import com.son.show.chuongtrinh.sapxep.SortUp;
 import com.son.show.file.DocFile;
 import com.son.nhanvien.Staff;
+import com.son.show.file.GhiFile;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
 public class Sort {
-    DocFile<Staff> docFile = new DocFile<>();
     Scanner scanner = new Scanner(System.in);
-    ArrayList<Staff> list = docFile.docFile("qlnv.txt");
-    //sắp xếp
+    PushAndChangeSaff manager = new PushAndChangeSaff();
+    GhiFile<Staff> ghiFile = new GhiFile<>();
     public void menuSort() {
         System.out.println("1. Sắp xếp theo id từ thấp đến cao");
         System.out.println("2. sắp xếp theo id từ cao xuống thấp");
@@ -24,31 +24,37 @@ public class Sort {
         int choice = Integer.parseInt(scanner.nextLine());
         switch (choice) {
             case 1:
-                sortUp();
+                sortUp(manager);
                 break;
             case 2:
-                sortDown();
+                sortDown(manager);
                 break;
             case 3:
-                sortSaffByType();
+                sortSaffByType(manager);
                 break;
             case 4:
                 break;
         }
     }
 
-    private void sortUp() {
+    private void sortUp(PushAndChangeSaff manager) {
+        ArrayList<Staff> list = manager.list;
         SortUp sortUp = new SortUp();
         Collections.sort(list, sortUp);
+        ghiFile.ghiFile("qlnv.txt",list);
     }
 
-    private void sortDown() {
+    private void sortDown(PushAndChangeSaff manager) {
+        ArrayList<Staff> list = manager.list;
         SortDown sortDown = new SortDown();
         Collections.sort(list, sortDown);
+        ghiFile.ghiFile("qlnv.txt",list);
     }
 
-    private void sortSaffByType() {
+    private void sortSaffByType(PushAndChangeSaff manager) {
+        ArrayList<Staff> list = manager.list;
         SortByType sortByType = new SortByType();
         Collections.sort(list, sortByType);
+        ghiFile.ghiFile("qlnv.txt",list);
     }
 }

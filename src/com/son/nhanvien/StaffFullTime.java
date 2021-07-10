@@ -10,8 +10,8 @@ public class StaffFullTime extends Staff{
     }
 
     public double tinhLuong(){
-        double luong;
-        return luong = getSalary() * 8;
+        double luong = super.getSalary() * 8;
+        return luong;
     }
 
     @Override

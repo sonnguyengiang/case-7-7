@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Status {
-    DocFile<Staff> docFile = new DocFile<>();
     Scanner scanner = new Scanner(System.in);
-    ArrayList<Staff> list = docFile.docFile("qlnv.txt");
     GhiFile<Staff> ghiFile = new GhiFile<>();
 
     private void check(int check, String a, String b) {
@@ -23,8 +21,9 @@ public class Status {
         }
     }
 
-    public void checkStatus() {
+    public void checkStatus(PushAndChangeSaff manager) {
         System.out.print("Nhập id của nhân viên: ");
+        ArrayList<Staff> list = manager.list;
         int id = Integer.parseInt(scanner.nextLine());
         int check = -1;
         for (Staff e : list) {
@@ -36,9 +35,8 @@ public class Status {
         }
         check(check, "__________\n", "Không tìm thấy...\n");
     }
-
-    //Thay đổi trạng thái
-    public void editStatus() {
+    public void editStatus(PushAndChangeSaff manager) {
+        ArrayList<Staff> list = manager.list;
         System.out.print("Nhập id của nhân viên: ");
         int id = Integer.parseInt(scanner.nextLine());
         int check = -1;

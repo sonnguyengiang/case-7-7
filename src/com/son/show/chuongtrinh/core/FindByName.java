@@ -7,9 +7,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FindByName {
-    DocFile<Staff> docFile = new DocFile<>();
     Scanner scanner = new Scanner(System.in);
-    ArrayList<Staff> list = docFile.docFile("qlnv.txt");
+
 
     private void check(int check, String a, String b) {
         if (check > 0) {
@@ -19,7 +18,8 @@ public class FindByName {
         }
     }
 
-    public void findByName() {
+    public void findByName(PushAndChangeSaff manager) {
+        ArrayList<Staff> list = manager.list;
         System.out.print("Nhập tên cần tìm: ");
         String name = scanner.nextLine();
         int check = -1;

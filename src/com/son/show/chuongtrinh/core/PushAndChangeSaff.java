@@ -45,7 +45,7 @@ public class PushAndChangeSaff {
     }
 
     //Cập nhập
-    public void updateNhanVien() {
+    public void updateNhanVien(PushAndChangeSaff manager) {
         System.out.print("Nhập id của nhân viên cần sửa: ");
         int id = Integer.parseInt(scanner.nextLine());
         int check = -1;
