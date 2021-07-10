@@ -7,8 +7,8 @@ public class StaffPartTime extends Staff {
         this.timeWork = timeWork;
     }
 
-    public StaffPartTime(int id, String name, String gender, int age, String address, String status, double salary, int timeWork) {
-        super(id, name, gender, age, address, status, salary);
+    public StaffPartTime(int id, String name, String gender, int age, String gmail, String phonenumber, String address, String status, double salary, int timeWork) {
+        super(id, name, gender, age, gmail, phonenumber, address, status, salary);
         this.timeWork = timeWork;
     }
 

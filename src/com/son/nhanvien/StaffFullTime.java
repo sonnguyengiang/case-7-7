@@ -5,8 +5,8 @@ public class StaffFullTime extends Staff{
     public StaffFullTime() {
     }
 
-    public StaffFullTime(int id, String name, String gender, int age, String address, String status, double salary) {
-        super(id, name, gender, age, address, status, salary);
+    public StaffFullTime(int id, String name, String gender, int age, String gmail, String phonenumber, String address, String status, double salary) {
+        super(id, name, gender, age, gmail, phonenumber, address, status, salary);
     }
 
     public double tinhLuong(){

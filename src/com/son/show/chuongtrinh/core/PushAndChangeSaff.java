@@ -1,5 +1,7 @@
 package com.son.show.chuongtrinh.core;
 
+import com.son.show.chuongtrinh.core.matcher.GmailMatcher;
+import com.son.show.chuongtrinh.core.matcher.PhoneNumberMatcher;
 import com.son.show.chuongtrinh.fail.AgeFail;
 import com.son.show.chuongtrinh.fail.GenderFail;
 import com.son.show.chuongtrinh.fail.IdFail;
@@ -32,15 +34,17 @@ public class PushAndChangeSaff {
         int id = getId();
         String name = getName();
         int age = getAge();
+        String gmail = getGmail();
+        String phonenumber = getPhoneNumber();
         String address = getAddress();
         String status = getStatus();
         String gender = getGender();
         double salary = getSalary();
         if (KieuNv.equals("full")) {
-            return new StaffFullTime(id, name, gender, age, address, status, salary);
+            return new StaffFullTime(id, name, gender, age, gmail, phonenumber, address, status, salary);
         } else {
             int hours = getHours();
-            return new StaffPartTime(id, name, gender, age, address, status, salary, hours);
+            return new StaffPartTime(id, name, gender, age, gmail, phonenumber, address, status, salary, hours);
         }
     }
 
@@ -72,6 +76,66 @@ public class PushAndChangeSaff {
     public void addList(Staff staff) {
         list.add(staff);
         ghiFile.ghiFile("qlnv.txt", list);
+    }
+
+    private String getGmail() {
+        while (true) {
+            int check = -1;
+            GmailMatcher gmailMatcher = new GmailMatcher();
+            System.out.print("Nhập gmail: ");
+            String gmail = scanner.nextLine();
+            if (gmailMatcher.validate(gmail) == true) {
+                if (list.size() == 0){
+                    return gmail;
+                } else {
+                    for (Staff a : list) {
+                        if (a.getGmail().equals(gmail)) {
+                            check = -1;
+                            break;
+                        } else {
+                            check = 1;
+                        }
+                    }
+                    if (check > 0) {
+                        return gmail;
+                    } else {
+                        System.out.println("gmail bị trùng");
+                    }
+                }
+            } else {
+                System.out.println("Nhập lại");
+            }
+        }
+    }
+
+    private String getPhoneNumber() {
+        while (true) {
+            int check = -1;
+            PhoneNumberMatcher phoneNumberMatcher = new PhoneNumberMatcher();
+            System.out.print("Nhập số điện thoại: ");
+            String phonenumber = scanner.nextLine();
+            if (phoneNumberMatcher.validate(phonenumber) == true) {
+                if (list.size()==0){
+                    return phonenumber;
+                }else {
+                    for (Staff a : list) {
+                        if (a.getPhonenumber().equals(phonenumber)) {
+                            check = -1;
+                        } else {
+                            check = 1;
+                        }
+                    }
+                    if (check > 0){
+                        return phonenumber;
+                    } else {
+                        System.out.println("số điện thoại bị trùng");
+                    }
+
+                }
+            } else {
+                System.out.println("Nhập lại");
+            }
+        }
     }
 
     private String getName() {
@@ -165,7 +229,6 @@ public class PushAndChangeSaff {
             try {
                 System.out.print("Nhập id của nhân viên(Nhập số): ");
                 int id = Integer.parseInt(scanner.nextLine());
-                int check = -1;
                 if (list.isEmpty()) {
                     return id;
                 } else {

@@ -45,7 +45,7 @@ public class ShowSalary {
         ArrayList<Staff> list = docFile.docFile("qlnv.txt");
         for (Staff a : list) {
             if (a instanceof StaffPartTime) {
-                System.out.println("id:" + a.getId() + " " +  ((StaffPartTime) a).getName() + ": " + ((StaffPartTime) a).tinhLuong() + " VNĐ");
+                System.out.println("id: " + a.getId() + " tên: " +  ((StaffPartTime) a).getName() + ": " + ((StaffPartTime) a).tinhLuong() + " VNĐ");
             }
         }
     }

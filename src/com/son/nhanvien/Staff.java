@@ -7,6 +7,8 @@ public class Staff implements Serializable{
     private String name;
     private String gender;
     private int age;
+    private String gmail;
+    private String phonenumber;
     private String address;
     private String status;
     private double salary;
@@ -14,11 +16,13 @@ public class Staff implements Serializable{
     public Staff() {
     }
 
-    public Staff(int id, String name, String gender, int age, String address, String status, double salary) {
+    public Staff(int id, String name, String gender, int age, String gmail, String phonenumber, String address, String status, double salary) {
         this.id = id;
         this.name = name;
         this.gender = gender;
         this.age = age;
+        this.gmail = gmail;
+        this.phonenumber = phonenumber;
         this.address = address;
         this.status = status;
         this.salary = salary;
@@ -80,13 +84,31 @@ public class Staff implements Serializable{
         this.salary = salary;
     }
 
+    public String getGmail() {
+        return gmail;
+    }
+
+    public void setGmail(String gmail) {
+        this.gmail = gmail;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
     @Override
     public String toString() {
         return
                 "id=" + id +
                         ", name='" + name + '\'' +
                         ", gender='" + gender + '\'' +
-                        ", age=" + age +
+                        ", age=" + age + '\'' +
+                        ", gmail=" + gmail + '\'' +
+                        ", phonenumber=" + phonenumber + '\'' +
                         ", address='" + address + '\'' +
                         ", status='" + status + '\'' +
                         ", salary=" + salary;
