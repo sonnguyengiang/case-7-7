@@ -32,7 +32,7 @@ public class ProgramMenu {
                     System.out.println(" 7. hiện thị toàn bộ thông tin");
                     System.out.println(" 8. Sắp xếp Nhân viên");
                     System.out.println(" 9. xóa nhân viên");
-                    System.out.println("10. xóa nhân viên");
+                    System.out.println("10. hiện thị lương nhân viên");
                     System.out.println("0. Exit");
                     System.out.print("Nhập lựa chọn: ");
                     int choice = Integer.parseInt(scanner.nextLine());
@@ -41,6 +41,7 @@ public class ProgramMenu {
                             System.out.println("     1. Thêm nhân viên fulltime");
                             System.out.println("     2. Thêm nhân viên parttime");
                             System.out.println("     3. Back");
+                            System.out.print("       nhập lựa chọn: ");
                             int choose = Integer.parseInt(scanner.nextLine());
                             if (choose == 1){
                                 Staff staff = manager.create("full");

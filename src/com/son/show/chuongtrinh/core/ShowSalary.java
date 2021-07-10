@@ -18,6 +18,7 @@ public class ShowSalary {
         System.out.println("   1. hiện thị lương nhân viên FullTime");
         System.out.println("   2. hiện thị lương nhân viên PartTime");
         System.out.println("   3. quay lại");
+        System.out.print("   Nhập lựa chọn: ");
         int choice = Integer.parseInt(scanner.nextLine());
         switch (choice) {
             case 1:
