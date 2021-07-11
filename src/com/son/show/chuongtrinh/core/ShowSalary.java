@@ -36,7 +36,7 @@ public class ShowSalary {
         ArrayList<Staff> list = docFile.docFile("qlnv.txt");
         for (Staff a : list) {
             if (a instanceof StaffFullTime) {
-                System.out.println("id:" + a.getId() + " " + ((StaffFullTime)a).getName() + ": " + ((StaffFullTime)a).tinhLuong() + " VNĐ");
+                System.out.println("id:" + a.getId() + ", tên: " + ((StaffFullTime)a).getName() + ", tổng lương: " + ((StaffFullTime)a).tinhLuong() + " VNĐ");
             }
         }
     }
@@ -45,7 +45,7 @@ public class ShowSalary {
         ArrayList<Staff> list = docFile.docFile("qlnv.txt");
         for (Staff a : list) {
             if (a instanceof StaffPartTime) {
-                System.out.println("id: " + a.getId() + " tên: " +  ((StaffPartTime) a).getName() + ": " + ((StaffPartTime) a).tinhLuong() + " VNĐ");
+                System.out.println("id: " + a.getId() + ", tên: " +  ((StaffPartTime) a).getName() + ", tổng lương: " + ((StaffPartTime) a).tinhLuong() + " VNĐ");
             }
         }
     }

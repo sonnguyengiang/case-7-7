@@ -3,6 +3,7 @@ package com.son.show.login.data;
 import com.son.show.file.DocFile;
 import com.son.show.file.GhiFile;
 import com.son.show.login.Login;
+import com.son.nhanvien.Staff;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,15 +14,19 @@ public class ManagerUser {
     Scanner scanner = new Scanner(System.in);
 
     public void MenuUser() {
-        System.out.println("1. thay đổi mật khẩu");
-        System.out.println("2. exit");
+        System.out.println("1. Hiện thị thông tin");
+        System.out.println("2. thay đổi mật khẩu");
+        System.out.println("3. exit");
         int choice = Integer.parseInt(scanner.nextLine());
         switch (choice) {
             case 1:
+                showUser();
+                break;
+            case 2:
                 changePass();
                 showa();
                 break;
-            case 2:
+            case 3:
                 break;
         }
     }
@@ -78,12 +83,17 @@ public class ManagerUser {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getAccount().equals(account)){
                 list.set(i,new Login(account,newPassword));
+                arrayList.set(0,new Login(account,newPassword));
                 System.out.println("Thay đổi thành công");
+                ghiFile.ghiFile("AccountUsing.txt",arrayList);
                 ghiFile.ghiFile("account.txt",list);
                 break;
             }
         }
     }
 
-//    private void
+    private void showUser(){
+        ArrayList<Login> list = docFile.docFile("AccountUsing.txt");
+        System.out.println(list);
+    }
 }
