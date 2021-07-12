@@ -24,35 +24,36 @@ public class ManagerAccount {
         String account = scanner.nextLine();
         System.out.print("Nhập mật khẩu: ");
         String password = scanner.nextLine();
-        checkAccount(account, password);
+        if (account.equals("admin") && password.equals("admin")) {
+            ProgramMenu.menuAdmin();
+        } else {
+            checkAccount(account, password);
+        }
     }
 
     private void checkAccount(String account, String password) {
         ArrayList<Login> arrayList = docFile.docFile("account.txt");
         int check = -1;
-        if (account.equals("admin") && password.equals("admin")) {
-            ProgramMenu.menuAdmin();
+        if (arrayList.size() == 0) {
+            System.out.println("ứng dụng này hiện tại chưa có ai đăng kí ...\n");
         } else {
-            if (arrayList.size() == 0) {
-                System.out.println("ứng dụng này hiện tại chưa có ai đăng kí ...\n");
-            } else {
-                for (Login login : arrayList) {
-                    if (login.getAccount().equals(account) && login.getPassword().equals(password)) {
-                        temp = account;
-                        System.out.println("Đăng nhập thành công ...\n");
-                        pushAccountUsing();
-                        ProgramMenu.menuSaff();
-                        return;
-                    } else {
-                        check = 1;
-                    }
+            for (Login login : arrayList) {
+                if (login.getAccount().equals(account) && login.getPassword().equals(password)) {
+                    temp = account;
+                    System.out.println("Đăng nhập thành công ...\n");
+                    pushAccountUsing();
+                    ProgramMenu.menuSaff();
+                    return;
+                } else {
+                    check = 1;
                 }
-                if (check > 0) {
-                    System.out.println("tài khoản hoặc mật khẩu không chính xác ...\n");
-                }
+            }
+            if (check > 0) {
+                System.out.println("tài khoản hoặc mật khẩu không chính xác ...\n");
             }
         }
     }
+
 
     public void createNewAccount() {
         ArrayList<Login> arrayList = docFile.docFile("account.txt");
@@ -61,23 +62,27 @@ public class ManagerAccount {
         System.out.print("Nhập mật khẩu: ");
         String password = scanner.nextLine();
         int check = -1;
-        if (arrayList.size() == 0) {
-            arrayList.add(new Login(account, password));
-            System.out.println("Thêm thành công ...\n");
-            ghiFile.ghiFile("account.txt", arrayList);
+        if (account.equals("admin")){
+            System.out.println("Bạn không thể tạo tài khoản với tên đăng nhập này");
         } else {
-            for (Login login : arrayList) {
-                if (login.getAccount().equals(account)) {
-                    System.out.println("Tài khoản đã tồn tại ...\n");
-                    return;
-                } else {
-                    check = 1;
-                }
-            }
-            if (check > 0) {
+            if (arrayList.size() == 0) {
                 arrayList.add(new Login(account, password));
                 System.out.println("Thêm thành công ...\n");
                 ghiFile.ghiFile("account.txt", arrayList);
+            } else {
+                for (Login login : arrayList) {
+                    if (login.getAccount().equals(account)) {
+                        System.out.println("Tài khoản đã tồn tại ...\n");
+                        return;
+                    } else {
+                        check = 1;
+                    }
+                }
+                if (check > 0) {
+                    arrayList.add(new Login(account, password));
+                    System.out.println("Thêm thành công ...\n");
+                    ghiFile.ghiFile("account.txt", arrayList);
+                }
             }
         }
     }
