@@ -32,7 +32,7 @@ public class Remove {
                 break;
             }
         }
-        check(check, "__________\n", "Không tìm thấy...\n");
+        check(check, "xóa thành công\n", "Không tìm thấy...\n");
         ghiFile.ghiFile("qlnv.txt", list);
     }
 }

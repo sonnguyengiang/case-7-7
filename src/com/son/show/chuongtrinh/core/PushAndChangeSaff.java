@@ -57,15 +57,15 @@ public class PushAndChangeSaff {
             if (list.get(i).getId() == id) {
                 if (list.get(i) instanceof StaffFullTime) {
                     list.set(i, create("full"));
-                    check = -1;
+                    check = 1;
                     break;
                 } else {
                     list.set(i, create("part"));
-                    check = -1;
+                    check = 1;
                     break;
                 }
             } else {
-                check = 1;
+                check = -1;
             }
         }
         check(check, "Update thành công", "Không tìm thấy nhân viên");

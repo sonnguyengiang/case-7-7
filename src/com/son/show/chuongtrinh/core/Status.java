@@ -33,7 +33,7 @@ public class Status {
                 break;
             }
         }
-        check(check, "__________\n", "Không tìm thấy...\n");
+        check(check, "", "Không tìm thấy...\n");
     }
     public void editStatus(PushAndChangeSaff manager) {
         ArrayList<Staff> list = manager.list;
