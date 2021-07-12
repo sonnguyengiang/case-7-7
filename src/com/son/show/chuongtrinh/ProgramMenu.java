@@ -1,7 +1,9 @@
 package com.son.show.chuongtrinh;
 
 
+import com.son.show.Display;
 import com.son.show.chuongtrinh.core.*;
+import com.son.show.login.data.ManagerAccount;
 import com.son.show.login.data.ManagerUser;
 import com.son.nhanvien.Staff;
 
@@ -19,6 +21,7 @@ public class ProgramMenu {
     static ShowSalary showSalary = new ShowSalary();
     static UpdateSaff updateSaff = new UpdateSaff();
     static Find find = new Find();
+    static Display display = new Display();
 
     static public void menuAdmin() {
         while (true) {
@@ -85,7 +88,7 @@ public class ProgramMenu {
                             show.showList(manager);
                             break;
                         case 7:
-                            sort.menuSort();
+                            manager.menuSort();
                             break;
                         case 8:
                             remove.remove(manager);
@@ -94,7 +97,9 @@ public class ProgramMenu {
                             showSalary.menuSalary();
                             break;
                         case 0:
-                            System.exit(0);
+                            System.out.println("\n");
+                            display.client();
+                            break;
                     }
                 }
             } catch (Exception e) {
@@ -144,13 +149,16 @@ public class ProgramMenu {
                             show.showList(manager);
                             break;
                         case 5:
-                            sort.menuSort();
+                            manager.menuSort();
                             break;
                         case 6:
                             showSalary.menuSalary();
                             break;
                         case 0:
-                            System.exit(0);
+                            System.out.println("\n");
+                            display.client();
+                            break;
+
                     }
                 }
             } catch (Exception e) {

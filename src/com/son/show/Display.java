@@ -11,6 +11,7 @@ public class Display {
        while (true){
            try {
                while (true) {
+                   System.out.println("------Login------");
                    System.out.println("1. đăng nhập");
                    System.out.println("2. Tạo tài khoản mới");
                    System.out.println("0. exit");
