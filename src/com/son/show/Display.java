@@ -29,7 +29,7 @@ public class Display {
                    }
                }
            } catch (Exception e){
-
+               System.out.println("");
            }
        }
     }

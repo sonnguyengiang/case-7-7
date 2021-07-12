@@ -3,7 +3,6 @@ package com.son.show.chuongtrinh;
 
 import com.son.show.Display;
 import com.son.show.chuongtrinh.core.*;
-import com.son.show.login.data.ManagerAccount;
 import com.son.show.login.data.ManagerUser;
 import com.son.nhanvien.Staff;
 
@@ -11,7 +10,7 @@ import java.util.Scanner;
 
 public class ProgramMenu {
     static Scanner scanner = new Scanner(System.in);
-    static PushSaff manager = new PushSaff();
+    static PushAndChangeSaff manager = new PushAndChangeSaff();
     static ManagerUser managerUser = new ManagerUser();
     static Sort sort = new Sort();
     static Show show = new Show();
@@ -42,6 +41,7 @@ public class ProgramMenu {
                     int choice = Integer.parseInt(scanner.nextLine());
                     switch (choice) {
                         case 1:
+                            System.out.println("     ------Thêm nhân viên------");
                             System.out.println("     1. Thêm nhân viên fulltime");
                             System.out.println("     2. Thêm nhân viên parttime");
                             System.out.println("     3. Back");
@@ -59,9 +59,11 @@ public class ProgramMenu {
                                 break;
                             }
                         case 2:
+                            System.out.println("     ------Tìm nhân viên------");
                             System.out.println("     1. Tìm nhân viên theo tên");
-                            System.out.println("     2. tìm nhân viên thao chữ cái");
-                            System.out.println("     3. Back");
+                            System.out.println("     2. Tìm nhân viên thao chữ cái");
+                            System.out.println("     3. Tìm nhân viên theo id");
+                            System.out.println("     0. Back");
                             System.out.print("     nhập lựa chọn: ");
                             int choose1 = Integer.parseInt(scanner.nextLine());
                             if (choose1 == 1) {
@@ -69,6 +71,10 @@ public class ProgramMenu {
                                 break;
                             } else if (choose1 == 2) {
                                 find.findByAlphabet();
+                                break;
+
+                            } else if (choose1 == 3) {
+                                find.findById();
                                 break;
                             } else {
                                 break;
@@ -103,6 +109,7 @@ public class ProgramMenu {
                     }
                 }
             } catch (Exception e) {
+                System.out.println("");
             }
         }
     }
@@ -123,9 +130,11 @@ public class ProgramMenu {
                     int choice = Integer.parseInt(scanner.nextLine());
                     switch (choice) {
                         case 1:
+                            System.out.println("     ------Tìm nhân viên------");
                             System.out.println("     1. Tìm nhân viên theo tên");
-                            System.out.println("     2. tìm nhân viên thao chữ cái");
-                            System.out.println("     3. Back");
+                            System.out.println("     2. Tìm nhân viên thao chữ cái");
+                            System.out.println("     3. Tìm nhân viên thao id");
+                            System.out.println("     0. Back");
                             System.out.print("     nhập lựa chọn: ");
                             int choose1 = Integer.parseInt(scanner.nextLine());
                             if (choose1 == 1) {
@@ -133,6 +142,9 @@ public class ProgramMenu {
                                 break;
                             } else if (choose1 == 2) {
                                 find.findByAlphabet();
+                                break;
+                            } else if (choose1 == 3) {
+                                find.findById();
                                 break;
                             } else {
                                 break;
@@ -162,6 +174,7 @@ public class ProgramMenu {
                     }
                 }
             } catch (Exception e) {
+                System.out.println("");
             }
         }
     }

@@ -7,7 +7,7 @@ public class PhoneNumberMatcher{
     private static  Pattern pattern;
     private Matcher matcher;
 
-    private static final String PHONE_REGEX = "^[0-9]{10}$";
+    private static final String PHONE_REGEX = "^[0]{1}+[0-9]{9}$";
 
     public PhoneNumberMatcher() {
         pattern = pattern.compile(PHONE_REGEX);

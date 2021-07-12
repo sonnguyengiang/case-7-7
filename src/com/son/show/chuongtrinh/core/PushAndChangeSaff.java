@@ -18,13 +18,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class PushSaff {
+public class PushAndChangeSaff {
     Scanner scanner = new Scanner(System.in);
     DocFile<Staff> docFile = new DocFile();
     GhiFile<Staff> ghiFile = new GhiFile();
     ArrayList<Staff> list = docFile.docFile("qlnv.txt");
 
     public void menuSort() {
+        System.out.println("------xắp xếp------");
         System.out.println("1. Sắp xếp theo id từ thấp đến cao");
         System.out.println("2. sắp xếp theo id từ cao xuống thấp");
         System.out.println("3. Phân loại nhân viên");
@@ -47,20 +48,21 @@ public class PushSaff {
     }
 
     private void sortUp() {
+        ArrayList<Staff> list = docFile.docFile("qlnv.txt");
         SortUp sortUp = new SortUp();
         Collections.sort(list, sortUp);
-        for (Staff a: list) {
-            System.out.println(a);
-        }
+        ghiFile.ghiFile("qlnv.txt",list);
     }
 
     private void sortDown() {
+        ArrayList<Staff> list = docFile.docFile("qlnv.txt");
         SortDown sortDown = new SortDown();
         Collections.sort(list, sortDown);
         ghiFile.ghiFile("qlnv.txt",list);
     }
 
     private void sortSaffByType() {
+        ArrayList<Staff> list = docFile.docFile("qlnv.txt");
         SortByType sortByType = new SortByType();
         Collections.sort(list, sortByType);
         ghiFile.ghiFile("qlnv.txt",list);
@@ -211,6 +213,7 @@ public class PushSaff {
 
     private String getStatus() {
         while (true) {
+            System.out.println("------status------");
             System.out.println("   1. đang đi làm");
             System.out.println("   2. đang nghỉ");
             System.out.println("   3. quay lại");

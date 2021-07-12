@@ -20,9 +20,11 @@ public class Remove {
         }
     }
 
-    public void remove(PushSaff manager) {
+    public void remove(PushAndChangeSaff manager) {
         int check = -1;
-        ArrayList<Staff> list = manager.list;
+        ArrayList<Staff> list = docFile.docFile("qlnv.txt");
+        System.out.println("");
+        System.out.println("------------");
         System.out.print("Nhập id nhân viên muốn cho ra đảo: ");
         int id = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < list.size(); i++) {

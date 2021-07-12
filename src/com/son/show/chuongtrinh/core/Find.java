@@ -14,7 +14,7 @@ public class Find {
     public void findByAlphabet() {
         ArrayList<Staff> list = docFile.docFile("qlnv.txt");
         ArrayList<Integer> saveIndex = new ArrayList<>();
-        System.out.print("        Nhập 1 chữ cái có trong tên: ");
+        System.out.print("      Nhập 1 chữ cái có trong tên: ");
         String alphabet = scanner.nextLine();
         ArrayList<String> listName = new ArrayList<>();
 
@@ -40,7 +40,7 @@ public class Find {
     public void findByname() {
         ArrayList<Staff> list = docFile.docFile("qlnv.txt");
         ArrayList<Integer> saveIndex = new ArrayList<>();
-        System.out.print("        Nhập tên cần tìm: ");
+        System.out.print("      Nhập tên cần tìm: ");
         String name = scanner.nextLine();
 
         for (int i = 0; i < list.size(); i++) {
@@ -53,6 +53,17 @@ public class Find {
         }
         for (int i = 0; i < saveIndex.size(); i++) {
             System.out.println(list.get(saveIndex.get(i)));
+        }
+    }
+
+    public void findById(){
+        ArrayList<Staff> list = docFile.docFile("qlnv.txt");
+        System.out.print("Nhập id Nhân viên cần tìm: ");
+        int id = Integer.parseInt(scanner.nextLine());
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getId() == id){
+                System.out.println(list.get(i));
+            }
         }
     }
 }

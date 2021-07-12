@@ -13,6 +13,7 @@ public class ManagerUser {
     Scanner scanner = new Scanner(System.in);
 
     public void MenuUser() {
+        System.out.println("------user------");
         System.out.println("1. Hiện thị thông tin");
         System.out.println("2. thay đổi mật khẩu");
         System.out.println("3. exit");
@@ -39,6 +40,7 @@ public class ManagerUser {
 //    }
 
     public void changePass(){
+        System.out.println("------change pass------");
         System.out.print("Nhập mật khẩu cũ: ");
         String oldPassword = scanner.nextLine();
         checkOldPassword(oldPassword);
@@ -72,6 +74,8 @@ public class ManagerUser {
             addNewPass(newPassword1);
         } else {
             System.out.println("Không giống nhau");
+            System.out.println("");
+            createNewPassword();
         }
     }
     private void addNewPass(String newPassword){

@@ -17,7 +17,7 @@ public class FindByName {
         }
     }
 
-    public void findByName(PushSaff manager) {
+    public void findByName(PushAndChangeSaff manager) {
         ArrayList<Staff> list = manager.list;
         System.out.print("Nhập tên cần tìm: ");
         String name = scanner.nextLine();

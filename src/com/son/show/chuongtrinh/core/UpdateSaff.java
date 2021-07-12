@@ -18,10 +18,10 @@ import java.util.Scanner;
 
 public class UpdateSaff {
     private Scanner scanner = new Scanner(System.in);
-    private PushSaff manager = new PushSaff();
+    private PushAndChangeSaff manager = new PushAndChangeSaff();
     private ArrayList<Staff> list = manager.list;
     private File file = new File("safftemp.txt");
-    private PushSaff manger = new PushSaff();
+    private PushAndChangeSaff manger = new PushAndChangeSaff();
     private GhiFile<Staff> ghiFile = new GhiFile<>();
     private DocFile<Staff> docFile = new DocFile<>();
 
@@ -51,8 +51,9 @@ public class UpdateSaff {
         }
     }
 
-    public void updateNhanVien(PushSaff manager) {
-        if (manager.list.size() == 0){
+    public void updateNhanVien(PushAndChangeSaff manager) {
+        ArrayList<Staff> list = docFile.docFile("qlnv.txt");
+        if (list.size() == 0){
             System.out.println("danh sách đang trống");
         } else {
             System.out.print("Nhập id của nhân viên cần sửa: ");
@@ -64,10 +65,12 @@ public class UpdateSaff {
                     if (list.get(i) instanceof StaffFullTime) {
                         list.set(i, create("full"));
                         check = 1;
+                        ghiFile.ghiFile("qlnv.txt", list);
                         break;
                     } else {
                         list.set(i, create("part"));
                         check = 1;
+                        ghiFile.ghiFile("qlnv.txt", list);
                         break;
                     }
                 } else {
@@ -75,7 +78,6 @@ public class UpdateSaff {
                 }
             }
             check(check, "Update thành công", "Không tìm thấy nhân viên");
-            ghiFile.ghiFile("qlnv.txt", list);
         }
     }
 

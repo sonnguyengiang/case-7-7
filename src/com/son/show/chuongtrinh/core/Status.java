@@ -1,5 +1,6 @@
 package com.son.show.chuongtrinh.core;
 
+import com.son.show.file.DocFile;
 import com.son.show.file.GhiFile;
 import com.son.nhanvien.Staff;
 import com.son.nhanvien.StaffFullTime;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Status {
+    DocFile<Staff> docFile = new DocFile<>();
     Scanner scanner = new Scanner(System.in);
     GhiFile<Staff> ghiFile = new GhiFile<>();
 
@@ -20,8 +22,8 @@ public class Status {
         }
     }
 
-    public void checkStatus(PushSaff manager) {
-        ArrayList<Staff> list = manager.list;
+    public void checkStatus(PushAndChangeSaff manager) {
+        ArrayList<Staff> list = docFile.docFile("qlnv.txt");
         if (list.size() == 0){
             System.out.println("danh sách đang trống");
         } else {
@@ -38,11 +40,11 @@ public class Status {
             check(check, "", "Không tìm thấy...\n");
         }
     }
-    public void editStatus(PushSaff manager) {
+    public void editStatus(PushAndChangeSaff manager) {
         if (manager.list.size()==0){
             System.out.println("danh sách đang trống");
         } else {
-            ArrayList<Staff> list = manager.list;
+            ArrayList<Staff> list = docFile.docFile("qlnv.txt");
             System.out.print("Nhập id của nhân viên: ");
             int id = Integer.parseInt(scanner.nextLine());
             int check = -1;

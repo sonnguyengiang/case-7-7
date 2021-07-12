@@ -15,6 +15,7 @@ public class ShowSalary {
     GhiFile<Staff> ghiFile = new GhiFile<>();
 
     public void menuSalary() {
+        System.out.println("   ------hiện thị lương------");
         System.out.println("   1. hiện thị lương nhân viên FullTime");
         System.out.println("   2. hiện thị lương nhân viên PartTime");
         System.out.println("   3. quay lại");

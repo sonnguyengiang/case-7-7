@@ -1,12 +1,14 @@
 package com.son.show.chuongtrinh.core;
 
 import com.son.nhanvien.Staff;
+import com.son.show.file.DocFile;
 
 import java.util.ArrayList;
 
 public class Show {
-    public void showList(PushSaff manager){
-        ArrayList<Staff> list = manager.list;
+    DocFile<Staff> docFile = new DocFile<>();
+    public void showList(PushAndChangeSaff manager){
+        ArrayList<Staff> list = docFile.docFile("qlnv.txt");
         if (list.size() == 0){
             System.out.println("danh sách đang trống");
         } else {
