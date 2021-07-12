@@ -18,6 +18,7 @@ public class ProgramMenu {
     static Remove remove = new Remove();
     static ShowSalary showSalary = new ShowSalary();
     static UpdateSaff updateSaff = new UpdateSaff();
+    static Find find = new Find();
 
     static public void menu() {
         while (true) {
@@ -56,8 +57,22 @@ public class ProgramMenu {
                                 break;
                             }
                         case 2:
-                            findByName.findByName(manager);
-                            break;
+                            System.out.println("     1. Tìm nhân viên theo tên");
+                            System.out.println("     2. tìm nhân viên thao chữ cái");
+                            System.out.println("     3. Back");
+                            System.out.print("     nhập lựa chọn: ");
+                            int choose1 = Integer.parseInt(scanner.nextLine());
+                            if (choose1 == 1) {
+                                find.findByname();
+                                break;
+                            } else if (choose1 == 2) {
+                                find.findByAlphabet();
+                                break;
+                            } else {
+                                break;
+                            }
+//                            findByName.findByName(manager);
+//                            break;
                         case 3:
                             status.checkStatus(manager);
                             break;
