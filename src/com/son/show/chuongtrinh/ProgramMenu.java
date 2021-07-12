@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class ProgramMenu {
     static Scanner scanner = new Scanner(System.in);
-    static PushAndChangeSaff manager = new PushAndChangeSaff();
+    static PushSaff manager = new PushSaff();
     static ManagerUser managerUser = new ManagerUser();
     static Sort sort = new Sort();
     static Show show = new Show();
@@ -17,11 +17,12 @@ public class ProgramMenu {
     static Status status = new Status();
     static Remove remove = new Remove();
     static ShowSalary showSalary = new ShowSalary();
+    static UpdateSaff updateSaff = new UpdateSaff();
 
-    static public void menu(){
-        while (true){
-            try{
-                while (true){
+    static public void menu() {
+        while (true) {
+            try {
+                while (true) {
                     System.out.println("-----------Menu-----------");
                     System.out.println(" 1. Thêm nhân viên");
                     System.out.println(" 2. Tìm kiếm nhân viên");
@@ -36,18 +37,18 @@ public class ProgramMenu {
                     System.out.println("0. Exit");
                     System.out.print("Nhập lựa chọn: ");
                     int choice = Integer.parseInt(scanner.nextLine());
-                    switch (choice){
+                    switch (choice) {
                         case 1:
                             System.out.println("     1. Thêm nhân viên fulltime");
                             System.out.println("     2. Thêm nhân viên parttime");
                             System.out.println("     3. Back");
                             System.out.print("       nhập lựa chọn: ");
                             int choose = Integer.parseInt(scanner.nextLine());
-                            if (choose == 1){
+                            if (choose == 1) {
                                 Staff staff = manager.create("full");
                                 manager.addList(staff);
                                 break;
-                            } else if (choose == 2){
+                            } else if (choose == 2) {
                                 Staff staff1 = manager.create("part");
                                 manager.addList(staff1);
                                 break;
@@ -61,7 +62,7 @@ public class ProgramMenu {
                             status.checkStatus(manager);
                             break;
                         case 4:
-                            manager.updateNhanVien(manager);
+                            updateSaff.updateNhanVien(manager);
                             break;
                         case 5:
                             status.editStatus(manager);
@@ -85,7 +86,7 @@ public class ProgramMenu {
                             System.exit(0);
                     }
                 }
-            } catch (Exception e){
+            } catch (Exception e) {
             }
         }
     }

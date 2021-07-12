@@ -20,7 +20,7 @@ public class Remove {
         }
     }
 
-    public void remove(PushAndChangeSaff manager) {
+    public void remove(PushSaff manager) {
         int check = -1;
         ArrayList<Staff> list = manager.list;
         System.out.print("Nhập id nhân viên muốn cho ra đảo: ");

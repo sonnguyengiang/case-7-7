@@ -1,6 +1,5 @@
 package com.son.show.chuongtrinh.core;
 
-import com.son.show.file.DocFile;
 import com.son.show.file.GhiFile;
 import com.son.nhanvien.Staff;
 import com.son.nhanvien.StaffFullTime;
@@ -21,45 +20,53 @@ public class Status {
         }
     }
 
-    public void checkStatus(PushAndChangeSaff manager) {
-        System.out.print("Nhập id của nhân viên: ");
+    public void checkStatus(PushSaff manager) {
         ArrayList<Staff> list = manager.list;
-        int id = Integer.parseInt(scanner.nextLine());
-        int check = -1;
-        for (Staff e : list) {
-            if (e.getId() == id) {
-                System.out.println(e.getName() + " hiện tại " + e.getStatus());
-                check = 1;
-                break;
+        if (list.size() == 0){
+            System.out.println("danh sách đang trống");
+        } else {
+            System.out.print("Nhập id của nhân viên: ");
+            int id = Integer.parseInt(scanner.nextLine());
+            int check = -1;
+            for (Staff e : list) {
+                if (e.getId() == id) {
+                    System.out.println(e.getName() + " hiện tại " + e.getStatus());
+                    check = 1;
+                    break;
+                }
             }
+            check(check, "", "Không tìm thấy...\n");
         }
-        check(check, "", "Không tìm thấy...\n");
     }
-    public void editStatus(PushAndChangeSaff manager) {
-        ArrayList<Staff> list = manager.list;
-        System.out.print("Nhập id của nhân viên: ");
-        int id = Integer.parseInt(scanner.nextLine());
-        int check = -1;
-        for (Staff staff : list) {
-            if (staff.getId() == id) {
-                if (staff instanceof StaffFullTime) {
-                    String status = getStatus();
-                    ((StaffFullTime) staff).setStatus(status);
-                    check = 1;
-                    break;
+    public void editStatus(PushSaff manager) {
+        if (manager.list.size()==0){
+            System.out.println("danh sách đang trống");
+        } else {
+            ArrayList<Staff> list = manager.list;
+            System.out.print("Nhập id của nhân viên: ");
+            int id = Integer.parseInt(scanner.nextLine());
+            int check = -1;
+            for (Staff staff : list) {
+                if (staff.getId() == id) {
+                    if (staff instanceof StaffFullTime) {
+                        String status = getStatus();
+                        ((StaffFullTime) staff).setStatus(status);
+                        check = 1;
+                        break;
+                    }
+                    if (staff instanceof StaffPartTime) {
+                        String status = getStatus();
+                        ((StaffPartTime) staff).setStatus(status);
+                        check = 1;
+                        break;
+                    }
+                } else {
+                    check = -1;
                 }
-                if (staff instanceof StaffPartTime) {
-                    String status = getStatus();
-                    ((StaffPartTime) staff).setStatus(status);
-                    check = 1;
-                    break;
-                }
-            } else {
-                check = -1;
             }
+            check(check, "Sửa thành công...\n", "Không tìm thấy...\n");
+            ghiFile.ghiFile("qlnv.txt", list);
         }
-        check(check, "Sửa thành công...\n", "Không tìm thấy...\n");
-        ghiFile.ghiFile("qlnv.txt", list);
     }
     private String getStatus() {
         while (true) {

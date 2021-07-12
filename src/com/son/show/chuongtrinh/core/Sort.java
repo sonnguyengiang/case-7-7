@@ -3,7 +3,6 @@ package com.son.show.chuongtrinh.core;
 import com.son.show.chuongtrinh.sapxep.SortByType;
 import com.son.show.chuongtrinh.sapxep.SortDown;
 import com.son.show.chuongtrinh.sapxep.SortUp;
-import com.son.show.file.DocFile;
 import com.son.nhanvien.Staff;
 import com.son.show.file.GhiFile;
 
@@ -13,7 +12,7 @@ import java.util.Scanner;
 
 public class Sort {
     Scanner scanner = new Scanner(System.in);
-    PushAndChangeSaff manager = new PushAndChangeSaff();
+    PushSaff manager = new PushSaff();
     GhiFile<Staff> ghiFile = new GhiFile<>();
     public void menuSort() {
         System.out.println("1. Sắp xếp theo id từ thấp đến cao");
@@ -37,21 +36,21 @@ public class Sort {
         }
     }
 
-    private void sortUp(PushAndChangeSaff manager) {
+    private void sortUp(PushSaff manager) {
         ArrayList<Staff> list = manager.list;
         SortUp sortUp = new SortUp();
         Collections.sort(list, sortUp);
         ghiFile.ghiFile("qlnv.txt",list);
     }
 
-    private void sortDown(PushAndChangeSaff manager) {
+    private void sortDown(PushSaff manager) {
         ArrayList<Staff> list = manager.list;
         SortDown sortDown = new SortDown();
         Collections.sort(list, sortDown);
         ghiFile.ghiFile("qlnv.txt",list);
     }
 
-    private void sortSaffByType(PushAndChangeSaff manager) {
+    private void sortSaffByType(PushSaff manager) {
         ArrayList<Staff> list = manager.list;
         SortByType sortByType = new SortByType();
         Collections.sort(list, sortByType);

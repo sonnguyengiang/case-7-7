@@ -3,7 +3,6 @@ package com.son.show.login.data;
 import com.son.show.file.DocFile;
 import com.son.show.file.GhiFile;
 import com.son.show.login.Login;
-import com.son.nhanvien.Staff;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -24,21 +23,20 @@ public class ManagerUser {
                 break;
             case 2:
                 changePass();
-                showa();
                 break;
             case 3:
                 break;
         }
     }
 
-    private void showa(){
-        DocFile<Login> docFile = new DocFile<>();
-        ArrayList<Login> list =  docFile.docFile("account.txt");
-        ArrayList<Login> list1 =  docFile.docFile("AccountUsing.txt");
-        for (Login a: list) {
-            System.out.println(a);
-        }
-    }
+//    private void showa(){
+//        DocFile<Login> docFile = new DocFile<>();
+//        ArrayList<Login> list =  docFile.docFile("account.txt");
+//        ArrayList<Login> list1 =  docFile.docFile("AccountUsing.txt");
+//        for (Login a: list) {
+//            System.out.println(a);
+//        }
+//    }
 
     public void changePass(){
         System.out.print("Nhập mật khẩu cũ: ");

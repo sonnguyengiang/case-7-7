@@ -14,7 +14,7 @@ import com.son.nhanvien.StaffPartTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class PushAndChangeSaff {
+public class PushSaff {
     Scanner scanner = new Scanner(System.in);
     DocFile<Staff> docFile = new DocFile();
     GhiFile<Staff> ghiFile = new GhiFile();
@@ -46,30 +46,6 @@ public class PushAndChangeSaff {
             int hours = getHours();
             return new StaffPartTime(id, name, gender, age, gmail, phonenumber, address, status, salary, hours);
         }
-    }
-
-    //Cập nhập
-    public void updateNhanVien(PushAndChangeSaff manager) {
-        System.out.print("Nhập id của nhân viên cần sửa: ");
-        int id = Integer.parseInt(scanner.nextLine());
-        int check = -1;
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getId() == id) {
-                if (list.get(i) instanceof StaffFullTime) {
-                    list.set(i, create("full"));
-                    check = 1;
-                    break;
-                } else {
-                    list.set(i, create("part"));
-                    check = 1;
-                    break;
-                }
-            } else {
-                check = -1;
-            }
-        }
-        check(check, "Update thành công", "Không tìm thấy nhân viên");
-        ghiFile.ghiFile("qlnv.txt", list);
     }
 
     //Thêm danh sách
