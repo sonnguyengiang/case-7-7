@@ -20,7 +20,7 @@ public class ProgramMenu {
     static UpdateSaff updateSaff = new UpdateSaff();
     static Find find = new Find();
 
-    static public void menu() {
+    static public void menuAdmin() {
         while (true) {
             try {
                 while (true) {
@@ -30,13 +30,12 @@ public class ProgramMenu {
                     System.out.println(" 3. Kiểm tra trạng thái nhân viên");
                     System.out.println(" 4. Sửa thông tin của nhân viên");
                     System.out.println(" 5. Thay đổi trạng thái của nhân viên");
-                    System.out.println(" 6. Thông tin tài khoản");
-                    System.out.println(" 7. hiện thị toàn bộ thông tin");
-                    System.out.println(" 8. Sắp xếp Nhân viên");
-                    System.out.println(" 9. xóa nhân viên");
-                    System.out.println("10. hiện thị lương nhân viên");
-                    System.out.println("0. Exit");
-                    System.out.print("Nhập lựa chọn: ");
+                    System.out.println(" 6. hiện thị toàn bộ thông tin");
+                    System.out.println(" 7. Sắp xếp Nhân viên");
+                    System.out.println(" 8. xóa nhân viên");
+                    System.out.println(" 9. hiện thị lương nhân viên");
+                    System.out.println(" 0. Exit");
+                    System.out.print(" Nhập lựa chọn: ");
                     int choice = Integer.parseInt(scanner.nextLine());
                     switch (choice) {
                         case 1:
@@ -83,18 +82,71 @@ public class ProgramMenu {
                             status.editStatus(manager);
                             break;
                         case 6:
-                            managerUser.MenuUser();
-                            break;
-                        case 7:
                             show.showList(manager);
                             break;
-                        case 8:
+                        case 7:
                             sort.menuSort();
                             break;
-                        case 9:
+                        case 8:
                             remove.remove(manager);
                             break;
-                        case 10:
+                        case 9:
+                            showSalary.menuSalary();
+                            break;
+                        case 0:
+                            System.exit(0);
+                    }
+                }
+            } catch (Exception e) {
+            }
+        }
+    }
+
+    static public void menuSaff() {
+        while (true) {
+            try {
+                while (true) {
+                    System.out.println("-----------Menu-----------");
+                    System.out.println(" 1. Tìm kiếm nhân viên");
+                    System.out.println(" 2. Kiểm tra trạng thái nhân viên");
+                    System.out.println(" 3. Thông tin tài khoản");
+                    System.out.println(" 4. hiện thị toàn bộ thông tin");
+                    System.out.println(" 5. Sắp xếp Nhân viên");
+                    System.out.println(" 6. hiện thị lương nhân viên");
+                    System.out.println(" 0. Exit");
+                    System.out.print(" Nhập lựa chọn: ");
+                    int choice = Integer.parseInt(scanner.nextLine());
+                    switch (choice) {
+                        case 1:
+                            System.out.println("     1. Tìm nhân viên theo tên");
+                            System.out.println("     2. tìm nhân viên thao chữ cái");
+                            System.out.println("     3. Back");
+                            System.out.print("     nhập lựa chọn: ");
+                            int choose1 = Integer.parseInt(scanner.nextLine());
+                            if (choose1 == 1) {
+                                find.findByname();
+                                break;
+                            } else if (choose1 == 2) {
+                                find.findByAlphabet();
+                                break;
+                            } else {
+                                break;
+                            }
+//                            findByName.findByName(manager);
+//                            break;
+                        case 2:
+                            status.checkStatus(manager);
+                            break;
+                        case 3:
+                            managerUser.MenuUser();
+                            break;
+                        case 4:
+                            show.showList(manager);
+                            break;
+                        case 5:
+                            sort.menuSort();
+                            break;
+                        case 6:
                             showSalary.menuSalary();
                             break;
                         case 0:

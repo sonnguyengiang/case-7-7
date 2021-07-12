@@ -15,11 +15,12 @@ public class ManagerAccount {
     private GhiFile<Login> ghiFile = new GhiFile();
     private Scanner scanner = new Scanner(System.in);
     private String temp = "";
+
     public ManagerAccount() {
     }
 
     public void login() {
-       System.out.print("Nhập tài khoản: ");
+        System.out.print("Nhập tài khoản: ");
         String account = scanner.nextLine();
         System.out.print("Nhập mật khẩu: ");
         String password = scanner.nextLine();
@@ -29,22 +30,26 @@ public class ManagerAccount {
     private void checkAccount(String account, String password) {
         ArrayList<Login> arrayList = docFile.docFile("account.txt");
         int check = -1;
-        if (arrayList.size() == 0) {
-            System.out.println("ứng dụng này hiện tại chưa có ai đăng kí ...\n");
+        if (account.equals("admin") && password.equals("admin")) {
+            ProgramMenu.menuAdmin();
         } else {
-            for (Login login : arrayList) {
-                if (login.getAccount().equals(account) && login.getPassword().equals(password)) {
-                    temp = account;
-                    System.out.println("Đăng nhập thành công ...\n");
-                    pushAccountUsing();
-                    ProgramMenu.menu();
-                    return;
-                } else {
-                    check = 1;
+            if (arrayList.size() == 0) {
+                System.out.println("ứng dụng này hiện tại chưa có ai đăng kí ...\n");
+            } else {
+                for (Login login : arrayList) {
+                    if (login.getAccount().equals(account) && login.getPassword().equals(password)) {
+                        temp = account;
+                        System.out.println("Đăng nhập thành công ...\n");
+                        pushAccountUsing();
+                        ProgramMenu.menuSaff();
+                        return;
+                    } else {
+                        check = 1;
+                    }
                 }
-            }
-            if (check > 0) {
-                System.out.println("tài khoản hoặc mật khẩu không chính xác ...\n");
+                if (check > 0) {
+                    System.out.println("tài khoản hoặc mật khẩu không chính xác ...\n");
+                }
             }
         }
     }
@@ -77,9 +82,9 @@ public class ManagerAccount {
         }
     }
 
-    public void pushAccountUsing(){
+    public void pushAccountUsing() {
         File file = new File("AccountUsing.txt");
-        if (!file.exists()){
+        if (!file.exists()) {
             try {
                 file.createNewFile();
             } catch (IOException exception) {
@@ -88,15 +93,15 @@ public class ManagerAccount {
         }
         ArrayList<Login> list = docFile.docFile("account.txt");
         ArrayList<Login> arrayList = new ArrayList<>();
-        arrayList.add(new Login("1","2"));
+        arrayList.add(new Login("1", "2"));
         String passwordTemp = "";
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).getAccount().equals(temp)){
+            if (list.get(i).getAccount().equals(temp)) {
                 passwordTemp = list.get(i).getPassword();
                 break;
             }
         }
-        arrayList.set(0,new Login(temp,passwordTemp));
-        ghiFile.ghiFile("AccountUsing.txt",arrayList);
+        arrayList.set(0, new Login(temp, passwordTemp));
+        ghiFile.ghiFile("AccountUsing.txt", arrayList);
     }
 }
